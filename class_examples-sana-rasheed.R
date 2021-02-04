@@ -175,6 +175,25 @@ colSums(is.na(z))
 complete.cases(z)
 na.omit(z)
 
+##################################################
+########### Split and Apply Functions ###########
+##################################################
+
+#Sum/Mean by Categorical values
+head(InsectSprays)
+
+tapply(InsectSprays$count, InsectSprays$spray, sum)
+
+# Split Data into Vectors Given a Variable
+spIns = split(InsectSprays$count, InsectSprays$spray)
+spIns
+
+sprcount = lapply(spIns, sum)
+sprcount
+
+unlist(sprcount)
+
+sapply(spIns, sum)
 
 ##################################################
 ### Combine two Data frames by Rows or Columns ###
