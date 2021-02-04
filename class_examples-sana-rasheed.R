@@ -116,6 +116,67 @@ X[order(x$var1, x$var3),]
 
 
 ##################################################
+####### Dealing with Missing/Null Values  #######
+##################################################
+
+# Test for Missing Values
+x <- c(1:4, NA, 6:7, NA)
+is.na(x)
+
+df<- data.frame(col1 = c(1:3, NA), col2 = c("this", NA,"is", "text"),
+                col3 = c(TRUE, FALSE, TRUE, TRUE), col4 = c(2.5, 4.2, 3.2, NA), stringsAsFactors = FALSE)
+df
+is.na(df)
+
+is.na(df$col4)                   # identify NAs in specific data frame column
+which(is.na(x))                  # identify location of NAs in vector
+sum(is.na(df))                   # identify count of NAs in data frame
+colSums(is.na(df))              # identify complete NAs in each Column
+
+# Recode/Impute Missing Values
+x <- c(1:4, NA, 6:7, NA)
+x
+x[is.na(x)] <-mean(x, na.rm = TRUE) 
+round(x, 2) 
+
+df<- data.frame(col1 = c(1:3, 99), col2 = c(2.5, 4.2, 99, 3.2))
+df
+df[df == 99] <-NA               # change 99s to NAs
+df
+
+df<-data.frame(col1 = c(1:3, NA), col2 = c("this", NA,"is", "text"),
+               col3 = c(TRUE, FALSE, TRUE, TRUE), col4 = c(2.5, 4.2, 3.2, NA),
+               stringsAsFactors = FALSE)
+df$col4[is.na(df$col4)] <-mean(df$col4, na.rm= TRUE)       # mean value of col4.
+df
+
+# Exclude Missing Values
+x <- c(1:4, NA, 6:7, NA)
+mean(x)
+mean(x, na.rm = TRUE)
+
+complete.cases(df)
+df[complete.cases(df),]
+df[!complete.cases(df),]
+
+na.omit(df)                            # omit all rows containing NAs.
+
+#### Exercise ####
+z <- airquality
+z
+is.na(z)
+is.na(z$Temp)
+is.na(z$Ozone)
+
+which(is.na(z))
+sum(is.na(z))
+
+colSums(is.na(z))
+complete.cases(z)
+na.omit(z)
+
+
+##################################################
 ### Combine two Data frames by Rows or Columns ###
 ##################################################
 
