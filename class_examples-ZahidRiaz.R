@@ -240,8 +240,21 @@ merge(df1, df2, by.x = "lotsaNumbers", by.y = "dfindex")
 #############################################
 ################### Dplyr ###################
 #############################################
-library(dplyr)
-library(datasets)
+library('dplyr')
+library('datasets')
+
+getwd()
+msleep <- read.csv("msleep.csv")
+head(msleep)
+sleeptime <- select(msleep, name, sleep_total)
+head(sleeptime)
+
+filter(msleep, order == 'Carnivora')
+
+group <- group_by(msleep, genus)
+levels(groups$genus)
+
+
 head(mtcars)
 
 sub_m <- mtcars %>% 
@@ -265,13 +278,13 @@ mtcars %>%
   summarise(hp_mean=mean(hp), disp_mean=mean(disp), n=n())
 
 
-
-
 #############################################
 ################### Tidyr ###################
 #############################################
 
-
+df <- data.frame(x = c('a:1','a:2','c:4','d:4'))
+df
+df %>% separate(x, c('key','value'),":") %>% str
 
 
 #########################################################
