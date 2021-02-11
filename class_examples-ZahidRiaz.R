@@ -322,4 +322,6 @@ wd <- d$street
 wordcloud(wd, scale=c(5,0.5), random.order=FALSE, 
            rot.per=0.35, use.r.layout=FALSE, colors=brewer.pal(8, "Dark2"))
 
+################### The End #####################
+
 
